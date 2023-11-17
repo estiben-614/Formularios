@@ -8,7 +8,10 @@ const onFinish = (values) => {
   values.vpdRanges.range2.offDuration *= 60;
   values.vpdRanges.range3.offDuration *= 60;
   values.vpdRanges.range4.offDuration *= 60;
-  console.log(values);
+  const jsonValues = JSON.stringify(values);
+  const jsonB64 = btoa(jsonValues)
+  console.log(`JSON  base64 : ${jsonB64}`);
+  console.log(`JSON  : ${atob(jsonB64)}`);
 };
 const { useForm, Item } = Form;
 const formLayout = {
@@ -28,9 +31,9 @@ const formStyle = {
 };
 const validateMessages = {
   required: '${label} is required!',
-  types: {
-    number: '${label} is not a valid number!',
-  },
+  // types: {
+  //   number: '${label} is not a valid number!',
+  // },
   number: {
     range: '${label} must be between ${min} and ${max}',
   },
@@ -50,8 +53,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -66,8 +69,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -118,8 +121,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -134,8 +137,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -186,8 +189,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -202,8 +205,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -254,8 +257,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -270,8 +273,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -322,8 +325,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
@@ -338,8 +341,8 @@ const items = [
               {
                 required: true,
                 type: "number",
-                min: 0.7,
-                max: 1,
+                // min: 0.7,
+                // max: 1,
               },
             ]}
           >
