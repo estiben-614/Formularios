@@ -1,4 +1,14 @@
 import { notification } from "antd";
+import CryptoJS from "crypto-js";
+
+export const cifradoAES = (jsonB64) => (
+  CryptoJS.AES.encrypt(jsonB64, import.meta.env.VITE_CIFRADO_AES).toString()
+  );
+export const descifradoAES = (texto, clave) => {
+  const bytes = CryptoJS.AES.decrypt(texto, clave)
+  const textoDescifrado = bytes.toString(CryptoJS.enc.Utf8);
+  return textoDescifrado;
+}
 
 export const onFinish = (values) => {
     console.log(values);
@@ -13,16 +23,15 @@ export const onFinish = (values) => {
   
     // Cifrado BASE 64
     const jsonB64 = btoa(jsonValues);
-    // console.log(`JSON  base64 : ${jsonB64}`);
-    // console.log(`JSON  : ${atob(jsonB64)}`);
-  
+    //Descifrado BASE 64
+    // atob(jsonB64)
     fetch("http://localhost:3000/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        data: jsonB64,
+        data: cifradoAES(jsonB64),
       }),
     })
       .then((response) =>

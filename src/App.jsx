@@ -12,11 +12,12 @@ import { map } from "lodash";
 import { thresholdArray } from "./utils/thresholdArray";
 import { vpdArray } from "./utils/vpdArray";
 import { addSettingsArray } from "./utils/addSettingsArray";
-import { onFinish } from "./utils/onFinish";
+import { onFinish } from "./utils/utils";
 
 const { useForm, Item } = Form;
 
 const { Title } = Typography;
+
 
 const validateMessages = {
   required: "${label} es obligatorio!",
@@ -24,7 +25,6 @@ const validateMessages = {
     range: "${label} debe ser un número entre ${min} y ${max}",
   },
 };
-
 const App = () => {
   const [form] = useForm();
   return (
