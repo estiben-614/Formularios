@@ -12,24 +12,8 @@ import { map } from "lodash";
 import { thresholdArray } from "./utils/thresholdArray";
 import { vpdArray } from "./utils/vpdArray";
 import { addSettingsArray } from "./utils/addSettingsArray";
-// import './App.css'
+import { onFinish } from "./utils/onFinish";
 
-const onFinish = (values) => {
-  console.log(values);
-  values.recheckTime *= 5;
-  values.vpdRanges.range0.offDuration *= 60;
-  values.vpdRanges.range1.offDuration *= 60;
-  values.vpdRanges.range2.offDuration *= 60;
-  values.vpdRanges.range3.offDuration *= 60;
-  values.vpdRanges.range4.offDuration *= 60;
-
-  const jsonValues = JSON.stringify(values);
-
-  // Cifrado BASE 64
-  const jsonB64 = btoa(jsonValues);
-  console.log(`JSON  base64 : ${jsonB64}`);
-  console.log(`JSON  : ${atob(jsonB64)}`);
-};
 const { useForm, Item } = Form;
 
 const { Title } = Typography;
@@ -70,7 +54,7 @@ const App = () => {
                   <InputNumber
                     size="large"
                     style={{
-                      width: '100%',
+                      width: "100%",
                     }}
                   />
                 </Item>
@@ -85,11 +69,11 @@ const App = () => {
 
         {
           <Tabs
-          defaultActiveKey="1"
-          tabBarGutter={80}
-          style={{
-            margin: 'auto'
-          }}
+            defaultActiveKey="1"
+            tabBarGutter={80}
+            style={{
+              margin: "auto",
+            }}
             items={map(vpdArray, (item) => {
               const { key, label, min, max, offDuration, mistingDuration } =
                 item;
@@ -100,33 +84,33 @@ const App = () => {
                   <>
                     <Row gutter={20}>
                       <Col flex="1 1 50%">
-                        <Item name={min.name} label={min.label}>
+                        <Item name={min.name} label={min.label} rules={min.rules}>
                           <InputNumber
                             size="large"
                             style={{
-                              width: '100%',
+                              width: "100%",
                             }}
                           />
                         </Item>
                       </Col>
 
                       <Col flex="1 1 50%">
-                        <Item name={max.name} label={max.label}>
+                        <Item name={max.name} label={max.label} rules={max.rules}>
                           <InputNumber
                             size="large"
                             style={{
-                              width: '100%',
+                              width: "100%",
                             }}
                           />
                         </Item>
                       </Col>
 
                       <Col flex="1 1 50%">
-                        <Item name={offDuration.name} label={offDuration.label}>
+                        <Item name={offDuration.name} label={offDuration.label} rules={offDuration.rules}>
                           <InputNumber
                             size="large"
                             style={{
-                              width: '100%',
+                              width: "100%",
                             }}
                           />
                         </Item>
@@ -136,11 +120,12 @@ const App = () => {
                         <Item
                           name={mistingDuration.name}
                           label={mistingDuration.label}
+                          rules={mistingDuration.rules}
                         >
                           <InputNumber
                             size="large"
                             style={{
-                              width: '100%',
+                              width: "100%",
                             }}
                           />
                         </Item>
@@ -166,7 +151,7 @@ const App = () => {
                   <InputNumber
                     size="large"
                     style={{
-                      width: '100%',
+                      width: "100%",
                     }}
                   />
                 </Item>
